@@ -29,8 +29,10 @@ def index(request):
     # context = {'latest_question_list': latest_question_list}
     return render(request, 'bingoMill/index.html')
 
-def delete(request):
-
+# def delete(request):
+#     if request.POST['password'] == :
+#
+#     return
 
 @csrf_exempt
 def upload(request):
