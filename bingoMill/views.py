@@ -13,8 +13,6 @@ def edit(request):
 
 def museum(request):
     bingo_list = Bingo.objects.all()
-    print(list(bingo_list)[0].id)
-    # rows = json.dumps(list(bingo_list), cls=DjangoJSONEncoder)
     context = {'bingo_list': list(bingo_list)}
 
     return render(request, 'bingoMill/museum.html', context)
@@ -22,13 +20,16 @@ def museum(request):
 
 def detail(request, bingo_id):
     bingo = get_object_or_404(Bingo, pk=bingo_id)
-    return render(request, 'bingoMill/detail.html', {"bingo_id": bingo_id})
+    words = bingo.words.split(',')
+    return render(request, 'bingoMill/detail.html', {"bingo" : bingo, 'words' : words})
 
 
 def index(request):
     # latest_question_list = Question.objects.all().order_by('-pub_date')[:5]
     # context = {'latest_question_list': latest_question_list}
     return render(request, 'bingoMill/index.html')
+
+def delete(request):
 
 
 @csrf_exempt

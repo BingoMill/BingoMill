@@ -402,29 +402,36 @@
 								<div class="info__bingo" ref="printMe2">
 									<div class="bingo__frame">
 										<div class="bingo__content">
-											<template v-if="Data.wordSize == 4">
-												<div v-for="(v,i) in Data.wordSize" :key="i+v" class="four__size">[[ Data.words[i] ]]</div>
+											{% if bingo.words_size == 4 %}
+											<template>
+												{% for i in words %}
+												<div class="four__size">{{i}}</div>
+												{%endfor%}
 											</template>
-											<template v-if="Data.wordSize == 9">
-												<div v-for="(v,i) in Data.wordSize" :key="i+v" class="nine__size">[[ Data.words[i] ]]</div>
+											{% elif bingo.words_size == 9%}
+											<template>
+												<div class="nine__size">{{i}}</div>
 											</template>
+											{% elif bingo.words_size == 16%}
 											<template v-if="Data.wordSize == 16">
-												<div v-for="(v,i) in Data.wordSize" :key="i+v" class="sixteen__size">[[ Data.words[i] ]]</div>
+												<div class="sixteen__size">{{i}}</div>
 											</template>
-											<template v-if="Data.wordSize == 25">
-												<div v-for="(v,i) in Data.wordSize" :key="i+v" class="twentyFive__size">[[ Data.words[i] ]]</div>
+											{% elif bingo.words_size == 25%}
+											<template>
+												<div class="twentyFive__size">{{i}}</div>
 											</template>
-											<template v-if="Data.wordSize == 36">
-												<div v-for="(v,i) in Data.wordSize" :key="i+v" class="thirtySix__size">[[ Data.words[i] ]]</div>
+											{% elif bingo.words_size == 36%}
+											<template>
+												<div class="thirtySix__size">{{i}}</div>
 											</template>
+											{%endif%}
 										</div>
 									</div>
 								</div>
 								<div class="info__text">
 									<div class="info__text__box">
-										<div class="info__text__box__title">[[Data.title]]</div>
-										<div class="info__text__box__username">작성자 : [[Data.username]]</div>
-										<div class="info__text__box__time">작성일 : [[Data.time]]</div>
+										<div class="info__text__box__title">{{bingo.title}}}</div>
+										<div class="info__text__box__username">작성자 : {{bingo.username}}}</div>
 										<div style="width:100%; display:flex; flex-wrap:wrap">
 											<div class="info__text__box__download" @click="print" style="margin-right:6px">다운로드</div>
 											<div class="info__text__box__delete" @click="deleteBingo">삭제</div>
