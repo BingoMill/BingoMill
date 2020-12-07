@@ -273,7 +273,7 @@
 					<div class="modal__content">
 						<img src="{% static 'clear.svg' %}" class="modal__image" width="26px" alt="뒤로가기" @click="deModal" />
 						<div class="modal__title">박물관 업로드</div>
-						<form method="post">
+						<form method="post" action="{% url 'bingoMill:upload'%}">
 							{% csrf_token %}
 							<div class="modal__text">
 								<v-text-field label="닉네임" prepend-icon="people" color="#6c63ff" class="pa-0" v-model="username" v-on:keyup.enter="upLoad" style="width:100%"></v-text-field>
@@ -292,7 +292,7 @@
 							<div style=" width:85%;">
 								<label>
 									<v-btn @click="upLoad()" color="#6c63ff" style="color:white; font-weight: bold;" width="100%" rounded>업로드</v-btn>
-									<input type="submit" value="" />
+									<input type="submit" value="upload" />
 								</label>
 							</div>
 						</form>

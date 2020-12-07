@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class BingomillConfig(AppConfig):
+class BingoMillConfig(AppConfig):
     name = 'bingoMill'
