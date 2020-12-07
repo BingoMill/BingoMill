@@ -240,7 +240,6 @@
 					<v-spacer />
 					<div style="display:flex; flex-wrap:wrap; justify-content:flex-end">
 						<div @click="modal()" class="nav__text">박물관업로드</div>
-						<div @click="print()" class="nav__text">빙고다운</div>
 					</div>
 				</v-app-bar>
 				<v-content style="background-color: #f1f1fa;">
@@ -276,23 +275,22 @@
 						<form method="post" action="{% url 'bingoMill:upload'%}">
 							{% csrf_token %}
 							<div class="modal__text">
-								<v-text-field label="닉네임" prepend-icon="people" color="#6c63ff" class="pa-0" v-model="username" v-on:keyup.enter="upLoad" style="width:100%"></v-text-field>
-								<v-text-field
-									label="비밀번호"
+									<input placeholder="닉네임" prepend-icon="people" color="#6c63ff" class="pa-0" v-model="username" v-on:keyup.enter="upLoad" style="width:100%" />
+									<input
 									prepend-icon="vpn_key"
+									placeholder="비밀번호"
 									color="#6c63ff"
 									class="pa-0"
 									:type="'password'"
 									v-model="password"
-									v-on:keyup.enter="upLoad"
 									style="width:100%"
-								></v-text-field>
+								/>
+
 								<div class="errorMes">[[ error ]]</div>
 							</div>
 							<div style=" width:85%;">
-								<label>
-									<v-btn @click="upLoad()" color="#6c63ff" style="color:white; font-weight: bold;" width="100%" rounded>업로드</v-btn>
-									<input type="submit" value="upload" />
+								<label style="display: flex">
+									<input type="submit" value="업로드" style="width:200px; height: 40px; border: 2px solid black;border-radius: 50px "/>
 								</label>
 							</div>
 						</form>
